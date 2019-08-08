@@ -23,6 +23,7 @@ public class FileSearch {
                 }
                 lineNumber++;
             }
+            // 若没找到，则返回-1
             return -1;
         } catch (FileNotFoundException e) {
             throw new IllegalArgumentException();
