@@ -17,6 +17,7 @@ public class FileSearch {
             int lineNumber = 1;
             String line;
             while ((line = br.readLine()) != null) {
+                // 找到第一个包含text的行的行号
                 if (line.contains(text)) {
                     return lineNumber;
                 }
