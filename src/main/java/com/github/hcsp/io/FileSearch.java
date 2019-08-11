@@ -2,7 +2,6 @@ package com.github.hcsp.io;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -25,8 +24,6 @@ public class FileSearch {
             }
             // 若没找到，则返回-1
             return -1;
-        } catch (FileNotFoundException e) {
-            throw new IllegalArgumentException();
         } catch (IOException e) {
             throw new IllegalArgumentException();
         }
