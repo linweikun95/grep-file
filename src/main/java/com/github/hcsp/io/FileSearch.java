@@ -21,14 +21,15 @@ public class FileSearch {
                     result = i;
                 }
             }
+            return result;
         } catch (FileNotFoundException e) {
             throw new IllegalArgumentException("文件不存在或者无法被读取", e);
         } catch (IOException e) {
             e.printStackTrace();
+            throw new IllegalArgumentException("文件读取异常", e);
         } catch (OutOfMemoryError e) {
             throw new OutOfMemoryError("文件过大");
         }
-        return result;
     }
 
     public static void main(String[] args) {
