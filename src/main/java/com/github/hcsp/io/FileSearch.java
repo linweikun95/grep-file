@@ -16,7 +16,9 @@ public class FileSearch {
             int count = 1;
             int rowNumber = -1;
             while ((str = bufferedReader.readLine()) != null) {
-                if (str.contains(text)) rowNumber = count;
+                if (str.contains(text)){
+                    rowNumber = count;
+                }
                 count++;
             }
             return rowNumber;
