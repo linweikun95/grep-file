@@ -13,14 +13,13 @@ public class FileSearch {
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(target))) {
             String line;
             int count = 1;
-            int i = -1;
             while ((line = bufferedReader.readLine()) != null){
                 if (line.contains(text)){
-                     i = count;
+                     return count;
                 }
                 count++;
             }
-            return i;
+            return -1;
 
         } catch (IOException e) {
             throw new IllegalArgumentException("File Not Found!");
@@ -30,6 +29,6 @@ public class FileSearch {
 
     public static void main(String[] args) {
         File projectDir = new File(System.getProperty("basedir", System.getProperty("user.dir")));
-        System.out.println("结果行号：" + grep(new File(projectDir, "log.txt"), "BBB"));
+        System.out.println("结果行号：" + grep(new File(projectDir, "log.txt"), "BAB"));
     }
 }
