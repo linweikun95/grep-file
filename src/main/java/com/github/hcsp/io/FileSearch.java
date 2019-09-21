@@ -13,22 +13,23 @@ public class FileSearch {
         try {
 
 
-            FileReader fileReader=new FileReader(target);
+            FileReader fileReader = new FileReader(target);
 
-        BufferedReader bufferedReader=new BufferedReader(fileReader);
-        String line;
-        int count=1;
-        int i=-1;
-        while ((line=bufferedReader.readLine())!=null){
-              if (line.contains(text)){
-                  i= count;
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line;
+            int count = 1;
+            int i = -1;
+            while ((line = bufferedReader.readLine()) != null) {
+                if (line.contains(text)) {
+                    i = count;
+                }
+                count++;
             }
-              count++;
-        }
-        return i;
-    }catch(IOException e){
+            return i;
+        } catch (IOException e) {
             throw new IllegalArgumentException("没找到");
-    }}
+        }
+    }
 
     public static void main(String[] args) {
         File projectDir = new File(System.getProperty("basedir", System.getProperty("user.dir")));
