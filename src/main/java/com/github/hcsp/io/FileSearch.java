@@ -30,11 +30,11 @@ public class FileSearch {
                     return lineNo;
                 }
             }
+            bfr.close();
+            fr.close();
         }catch (IOException e){
             e.printStackTrace();
         }
-
-
         return -1;
     }
 
