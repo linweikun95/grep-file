@@ -1,29 +1,29 @@
 package com.github.hcsp.io;
 
-import org.apache.commons.io.FileUtils;
-
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.util.List;
 
 public class FileSearch {
     // 找到第一个包含text的行的行号，行号从1开始计算。若没找到，则返回-1。
     // 如果指定的文件不存在或者无法被读取，抛出一个IllegalArgumentException。
     // 请不要让这个方法抛出checked exception
     public static int grep(File target, String text) {
+        int count = 1;
         try {
-            List<String> content = FileUtils.readLines(target, Charset.defaultCharset());
-            for (int i = 0; i < content.size(); i++) {
-                if (content.get(i) != null && content.get(i).contains(text)) {
-                    return i + 1;
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(target));
+            String content = bufferedReader.readLine();
+            while (content != null) {
+                if (content.contains(text)) {
+                    return count;
                 }
+                count++;
+                content = bufferedReader.readLine();
             }
             return -1;
         } catch (IOException e) {
             throw new IllegalArgumentException();
-        } catch (OutOfMemoryError e) {
-            return 55555;
         }
     }
 
