@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.FileReader;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
+
 
 public class FileSearch {
     // 找到第一个包含text的行的行号，行号从1开始计算。若没找到，则返回-1。
