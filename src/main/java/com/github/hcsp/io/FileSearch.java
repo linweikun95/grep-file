@@ -24,10 +24,7 @@ public class FileSearch {
             return -1;
         } catch (IOException e) {
             throw new IllegalArgumentException(e);
-
-
         }
-
     }
 
     public static void main(String[] args) {
