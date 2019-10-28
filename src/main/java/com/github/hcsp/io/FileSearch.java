@@ -1,10 +1,8 @@
 package com.github.hcsp.io;
 
-import org.apache.commons.io.FileUtils;
-
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Scanner;
 
 public class FileSearch {
     // 找到第一个包含text的行的行号，行号从1开始计算。若没找到，则返回-1。
@@ -12,8 +10,18 @@ public class FileSearch {
     // 请不要让这个方法抛出checked exception
     public static int grep(File target, String text) {
         try {
-            ArrayList<String> list = (ArrayList<String>) FileUtils.readLines(target, "UTF-8");
-            return list.indexOf(text);
+            Scanner sc = new Scanner(target);
+            //创建一个变量来记录行数
+            int lineContainsText = 1;
+            while (sc.hasNextLine()) {
+                //每次只读取一行，不会累积文件
+                String line = sc.nextLine();
+                if (line.contains(text)) {
+                    return lineContainsText;
+                }
+                lineContainsText++;
+            }
+            return -1;
         } catch (IOException e) {
             throw new IllegalArgumentException();
         }
