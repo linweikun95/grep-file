@@ -10,7 +10,7 @@ public class FileSearch {
         try {
             Reader reader = new FileReader(target);
             BufferedReader bufferedReader = new BufferedReader(reader);
-            String line = ga .readLine();
+            String line = bufferedReader.readLine();
             boolean isContain = false;
             int index = 1;
             while (line != null) {
