@@ -10,7 +10,7 @@ public class FileSearch {
         try {
             Reader reader = new FileReader(target);
             BufferedReader bufferedReader = new BufferedReader(reader);
-            String line = bufferedReader.readLine();
+            String line = ga .readLine();
             boolean isContain = false;
             int index = 1;
             while (line != null) {
@@ -21,6 +21,7 @@ public class FileSearch {
                 index++;
                 line = bufferedReader.readLine();
             }
+            bufferedReader.close();
             return isContain ? index : -1;
         } catch (Exception e) {
             throw new IllegalArgumentException();
