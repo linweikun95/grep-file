@@ -17,10 +17,10 @@ public class FileSearch {
                 }
                 count++;
             }
+        return -1;
         } catch (IOException e) {
             throw new IllegalArgumentException("指定的文件不存在或者无法被读取");
         }
-        return -1;
     }
 
     public static void main(String[] args) {
