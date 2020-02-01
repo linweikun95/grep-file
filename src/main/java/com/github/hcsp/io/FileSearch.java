@@ -1,10 +1,6 @@
 package com.github.hcsp.io;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.util.List;
+import java.io.*;
 
 public class FileSearch {
 
@@ -13,11 +9,14 @@ public class FileSearch {
     // 请不要让这个方法抛出checked exception
     public static int grep(File target, String text) {
         int lineNumber = 0;
-        try {
-            List<String> allLines = Files.readAllLines(target.toPath(), Charset.defaultCharset());
-            for (String line :
-                    allLines) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(target))) {
+            while (true) {
                 lineNumber++;
+                String line = bufferedReader.readLine();
+                if (line == null) {
+                    lineNumber = -1;
+                    break;
+                }
                 if (line.contains(text)) {
                     return lineNumber;
                 }
@@ -25,11 +24,11 @@ public class FileSearch {
         } catch (IOException e) {
             throw new IllegalArgumentException();
         }
-        return -1;
+        return lineNumber;
     }
 
     public static void main(String[] args) {
         File projectDir = new File(System.getProperty("basedir", System.getProperty("user.dir")));
-        System.out.println("结果行号：" + grep(new File(projectDir, "log.txt"), "BBB"));
+        System.out.println("结果行号：" + grep(new File(projectDir, "log.txt"), "DDD"));
     }
 }
