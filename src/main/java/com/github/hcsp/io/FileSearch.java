@@ -19,7 +19,9 @@ public class FileSearch {
                 if (str.contains(text)) {
                     result = line;
                     break;
-                } else result = -1;
+                } else {
+                    result = -1;
+                }
                 str = bufferedReader.readLine();
             }
         } catch (IOException e) {
