@@ -19,7 +19,7 @@ public class FileSearch {
             }
             return -1;
         } catch (IOException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(e);
         }
     }
 
