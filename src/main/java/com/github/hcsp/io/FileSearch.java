@@ -9,20 +9,17 @@ public class FileSearch {
     public static int grep(File target, String text) {
         int i = 1;
         try {
-            FileInputStream inputstream = new FileInputStream(target);
-            StringBuffer buffer = new StringBuffer();
-            BufferedReader bufferreader = new BufferedReader(new InputStreamReader(
-                    inputstream));
-            while (bufferreader.readLine() != null) {
-                if (bufferreader.readLine().contains(text)) {
+            BufferedReader br = new BufferedReader(new FileReader(target));
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (line.contains(text)) {
                     return i;
                 }
-                bufferreader.readLine();
                 i++;
             }
             return -1;
         } catch (IOException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(e);
         }
     }
 
