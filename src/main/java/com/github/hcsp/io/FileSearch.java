@@ -15,7 +15,7 @@ public class FileSearch {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new IllegalArgumentException(e);
         }
         return -1;
     }
