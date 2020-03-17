@@ -1,9 +1,9 @@
 package com.github.hcsp.io;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.util.List;
 
 public class FileSearch {
     // 找到第一个包含text的行的行号，行号从1开始计算。若没找到，则返回-1。
@@ -11,18 +11,34 @@ public class FileSearch {
     // 请不要让这个方法抛出checked exception
     public static int grep(File target, String text) {
         int lineNumber = 1;
-        List<String> lines = null;
+
         try {
-            lines = Files.readAllLines(target.toPath());
+            BufferedReader br = new BufferedReader(new FileReader(target));
+            while (br.ready()) {
+                if (br.readLine().contains(text)) {
+                    return lineNumber;
+                }
+                lineNumber++;
+            }
         } catch (IOException e) {
             throw new IllegalArgumentException(e);
         }
-        for (String line : lines) {
-            if (line.contains(text)) {
-                return lineNumber;
-            }
-            lineNumber++;
-        }
+
+//        List<String> lines = null;
+//        if (!Files.exists(target.toPath())) {
+//            throw new IllegalArgumentException("文件不存在");
+//        }
+//        try {
+//            lines = Files.readAllLines(target.toPath());
+//        } catch (IOException e) {
+//            throw new IllegalArgumentException("文件无法被读取", e);
+//        }
+//        for (String line : lines) {
+//            if (line.contains(text)) {
+//                return lineNumber;
+//            }
+//            lineNumber++;
+//        }
         return -1;
     }
 
