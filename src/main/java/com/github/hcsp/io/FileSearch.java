@@ -23,7 +23,7 @@ public class FileSearch {
             br.close();
             return -1;
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
     }
 
