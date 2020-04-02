@@ -20,7 +20,7 @@ public class FileSearch {
                 }
             }
         } catch (IOException e) {
-            throw new IllegalArgumentException("指定的文件不存在或者无法被读取",e);
+            throw new IllegalArgumentException("指定的文件不存在或者无法被读取", e);
         }
         return flag;
     }
