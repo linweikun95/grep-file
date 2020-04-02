@@ -8,16 +8,17 @@ public class FileSearch {
     // 请不要让这个方法抛出checked exception
     public static int grep(File target, String text) throws IllegalArgumentException {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(target))) {
-            String line;
-            int i = 0;
-            while ((line = bufferedReader.readLine()) != null) {
-                i++;
-                if (line.contains(text)) {
-                    return i;
+            int lineNum = 1;
+            while (bufferedReader.ready()) {
+                if (bufferedReader.readLine().contains(text)) {
+                    return lineNum;
                 }
+                lineNum++;
             }
-        } catch (IOException | OutOfMemoryError e) {
-            throw new IllegalArgumentException("文件不存在或者text不合法", e);
+        } catch (IOException e) {
+            throw new IllegalArgumentException("文件不存在或者无法读取", e);
+        } catch (OutOfMemoryError error) {
+            throw new IllegalArgumentException("文件太大了", error);
         }
 
         return -1;
