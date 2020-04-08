@@ -29,23 +29,6 @@ public class FileSearch {
 
         return -1;
 
-//        try {
-//            BufferedReader bufferedReader = new BufferedReader(new FileReader(target))
-//            int lineNum = 1;
-//            String currentLine;
-//            while ((currentLine = bufferedReader.readLine()) != null) {
-//                if (currentLine.contains(text)) {
-//                    return lineNum;
-//                }
-//                lineNum++;
-//            }
-//        } catch (IOException e) {
-//            throw new IllegalArgumentException("文件不存在或者无法读取", e);
-//        } catch (OutOfMemoryError error) {
-//            throw new IllegalArgumentException("文件太大了", error);
-//        }
-//
-//        return -1;
     }
 
 
