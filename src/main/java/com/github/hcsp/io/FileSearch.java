@@ -10,25 +10,19 @@ public class FileSearch {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(target));
             int lineNumber = 1;
-
             while (reader.ready()) {
                 if (reader.readLine().contains(text)) {
                     return lineNumber;
                 }
                 lineNumber++;
             }
-
             reader.close();
-
         } catch (IOException e) {
             throw new IllegalArgumentException("文件不存在或无法读取", e);
         } catch (OutOfMemoryError error) {
             throw new IllegalArgumentException("文件太大了", error);
         }
-
-
         return -1;
-
     }
 
 
