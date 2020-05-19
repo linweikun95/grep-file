@@ -17,7 +17,7 @@ public class FileSearch {
             int lineNumber = 0;
             while ((line = buf.readLine()) != null) {
                 lineNumber++;
-                if (text.equals(line)) {
+                if (text.contains(line)) {
                     return lineNumber;
                 }
             }
