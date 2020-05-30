@@ -14,7 +14,7 @@ public class FileSearch {
             int lineNumber = 1;
             String line;
             while ((line = reader.readLine()) != null) {
-                if (line.equals(text)) {
+                if (line.contains(text)) {
                     return lineNumber;
                 }
                 lineNumber++;
