@@ -1,8 +1,9 @@
 package com.github.hcsp.io;
 
-import javax.imageio.IIOException;
-import javax.swing.text.html.parser.Entity;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class FileSearch {
     // 找到第一个包含text的行的行号，行号从1开始计算。若没找到，则返回-1。
